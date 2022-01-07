@@ -35,12 +35,13 @@ namespace GamesApp.BL.Services
             try
             {
                 _context.Achievements.Add(achievement);
-                response.StatusCode = System.Net.HttpStatusCode.OK;
+                response.StatusCode = System.Net.HttpStatusCode.Created;
             }
             catch (Exception)
             {
 
-                throw;
+                response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                response.ErrorMessage = Message.InternalServerError;
             }
 
             return response;
@@ -56,6 +57,7 @@ namespace GamesApp.BL.Services
                 if (achievement == null)
                 {
                     response.StatusCode = System.Net.HttpStatusCode.NotFound;
+
                     return response;
                 }
 
@@ -65,7 +67,8 @@ namespace GamesApp.BL.Services
             catch (Exception)
             {
 
-                throw;
+                response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                response.ErrorMessage = Message.InternalServerError;
             }
 
             return response;
@@ -93,7 +96,7 @@ namespace GamesApp.BL.Services
             catch (Exception)
             {
 
-                throw;
+                response.StatusCode = System.Net.HttpStatusCode.NotFound;
             }
 
             return response;
@@ -103,12 +106,64 @@ namespace GamesApp.BL.Services
         {
             Response<List<AchievementDto>> response = new Response<List<AchievementDto>>();
 
+            try
+            {
+                _context.Achievements.Where(a => a.GameId == gameId).
+                    OrderBy(a => a.DisplayOrder).
+                    Select(a => new AchievementDto {
+                        Id = a.Id,
+                        DisplayName = a.DisplayName,
+                        Description = a.Description,
+                        DisplayOrder = a.DisplayOrder,
+                        Created = a.Created,
+                        Update = a.Update,
+                        GameId = a.GameId,
+                        Icon = a.Icon
+                    }).ToList();
+            }
+            catch (Exception)
+            {
+
+                response.StatusCode = System.Net.HttpStatusCode.NotFound;
+            }
+
             return response;
         }
 
-        public Response<NoValue> UpdateAchievement(AchievementDto achievement)
+        public Response<NoValue> UpdateAchievement(AchievementDto achievementDto)
         {
-            throw new NotImplementedException();
+            Response<NoValue> response = new Response<NoValue>();
+
+            Achievement achievement = _context.Achievements.Where(a => a.Id == achievementDto.Id).FirstOrDefault();
+
+            if (achievement == null)
+            {
+                response.StatusCode = System.Net.HttpStatusCode.NotFound;
+                return response;
+            }
+
+            achievement.DisplayName = achievementDto.DisplayName;
+            achievement.Description = achievementDto.Description;
+            achievement.DisplayOrder = achievementDto.DisplayOrder;
+            achievement.Update = System.DateTime.Now;
+            achievement.GameId = achievementDto.GameId;
+            achievement.Icon = achievementDto.Icon;
+
+            try
+            {
+
+                _context.Achievements.Update(achievement);
+                response.StatusCode = System.Net.HttpStatusCode.OK;
+
+            }
+            catch (Exception)
+            {
+
+                response.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+                response.ErrorMessage = Message.InternalServerError;
+            }
+
+            return response;
         }
     }
 }
