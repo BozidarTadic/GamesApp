@@ -40,7 +40,7 @@ namespace GamesApp.Controllers
             switch (result.StatusCode)
             {
                 case System.Net.HttpStatusCode.OK:
-                    return Ok();
+                    return Ok(result.Content);
                 case System.Net.HttpStatusCode.NotFound:
                     return StatusCode(404, "Not Found");
                 default:
@@ -56,7 +56,7 @@ namespace GamesApp.Controllers
             switch (result.StatusCode)
             {
                 case System.Net.HttpStatusCode.OK:
-                    return Ok();
+                    return Ok(result.Content);
                 case System.Net.HttpStatusCode.NotFound:
                     return StatusCode(404, "Not Found");
                 default:
