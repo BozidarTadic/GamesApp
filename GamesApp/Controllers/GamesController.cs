@@ -51,7 +51,7 @@ namespace GamesApp.Controllers
         [Route("GetAllGameAchievements")]
         public IActionResult GetAllGameAchievements(string gameId)
         {
-            var result = _gameService.GetAllGameAchievements(gameId);
+            var result=_gameService.GetAllGameAchievements(gameId);
 
             switch (result.StatusCode)
             {

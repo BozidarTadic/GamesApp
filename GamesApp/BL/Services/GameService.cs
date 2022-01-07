@@ -108,7 +108,7 @@ namespace GamesApp.BL.Services
 
             try
             {
-                _context.Achievements.Where(a => a.GameId == gameId).
+                response.Content = _context.Achievements.Where(a => a.GameId == gameId).
                     OrderBy(a => a.DisplayOrder).
                     Select(a => new AchievementDto {
                         Id = a.Id,
@@ -120,6 +120,7 @@ namespace GamesApp.BL.Services
                         GameId = a.GameId,
                         Icon = a.Icon
                     }).ToList();
+                response.StatusCode = System.Net.HttpStatusCode.OK;
             }
             catch (Exception)
             {
