@@ -1,3 +1,5 @@
+using GamesApp.BL.Interfaces;
+using GamesApp.BL.Services;
 using GamesApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +33,8 @@ namespace GamesApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IGameService, GameService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
