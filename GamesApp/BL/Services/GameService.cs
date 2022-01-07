@@ -25,8 +25,8 @@ namespace GamesApp.BL.Services
                 DisplayName = achievementDto.DisplayName,
                 Description = achievementDto.Description,
                 DisplayOrder = achievementDto.DisplayOrder,
-                Created = achievementDto.Created,
-                Update = achievementDto.Update,
+                Created = DateTime.UtcNow,
+                Update = DateTime.UtcNow,
                 GameId = achievementDto.GameId,
                 Icon = achievementDto.Icon
                 
