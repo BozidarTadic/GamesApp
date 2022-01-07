@@ -17,9 +17,9 @@ namespace GamesApp.Controllers
         }
         [HttpPost]
         [Route("CreateAchievement")]
-        public IActionResult CreateAchievement(string id)
+        public IActionResult CreateAchievement(AchievementDto achievementDto)
         {
-            var result = _gameService.GetAchievement(id);
+            var result = _gameService.CreateAchievement(achievementDto);
 
             switch (result.StatusCode)
             {
