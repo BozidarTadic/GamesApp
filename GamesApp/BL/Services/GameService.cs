@@ -16,7 +16,7 @@ namespace GamesApp.BL.Services
         {
             _context = context;
         }
-        public Response<NoValue> CreateAchievement(AchievementDto achievementDto)
+        public Response<NoValue> CreateAchievement(UpdateAchievementDto achievementDto)
         {
             Response<NoValue> response = new Response<NoValue>();
 
@@ -131,7 +131,7 @@ namespace GamesApp.BL.Services
             return response;
         }
 
-        public Response<NoValue> UpdateAchievement(AchievementDto achievementDto)
+        public Response<NoValue> UpdateAchievement(UpdateAchievementDto achievementDto)
         {
             Response<NoValue> response = new Response<NoValue>();
 

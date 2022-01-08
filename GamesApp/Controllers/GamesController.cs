@@ -17,7 +17,7 @@ namespace GamesApp.Controllers
         }
         [HttpPost]
         [Route("CreateAchievement")]
-        public IActionResult CreateAchievement(AchievementDto achievementDto)
+        public IActionResult CreateAchievement(UpdateAchievementDto achievementDto)
         {
             var result = _gameService.CreateAchievement(achievementDto);
 
@@ -65,7 +65,7 @@ namespace GamesApp.Controllers
         }
         [HttpPut]
         [Route("UpdateAchievements")]
-        public IActionResult UpdateAchievements(AchievementDto achievementsDto)
+        public IActionResult UpdateAchievements(UpdateAchievementDto achievementsDto)
         {
             var result = _gameService.UpdateAchievement(achievementsDto);
 

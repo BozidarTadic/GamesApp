@@ -11,8 +11,8 @@ namespace GamesApp.BL.Interfaces
     {
         public Response<AchievementDto> GetAchievement(string id);
         public Response<List<AchievementDto>> GetAllGameAchievements(string gameId);
-        public Response<NoValue> CreateAchievement(AchievementDto achievementDto);
-        public Response<NoValue> UpdateAchievement(AchievementDto achievementDto);
+        public Response<NoValue> CreateAchievement(UpdateAchievementDto achievementDto);
+        public Response<NoValue> UpdateAchievement(UpdateAchievementDto achievementDto);
         public Response<NoValue> DeleteAchievement(string id);
     }
 }
