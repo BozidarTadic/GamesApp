@@ -21,7 +21,7 @@ namespace GamesApp.BL.Services
             Response<NoValue> response = new Response<NoValue>();
 
             Achievement achievement = new Achievement { 
-                
+                Id=achievementDto.Id,
                 DisplayName = achievementDto.DisplayName,
                 Description = achievementDto.Description,
                 DisplayOrder = achievementDto.DisplayOrder,
@@ -63,6 +63,7 @@ namespace GamesApp.BL.Services
                 }
 
                 _context.Achievements.Remove(achievement);
+                _context.SaveChanges();
                 response.StatusCode = System.Net.HttpStatusCode.OK;
             }
             catch (Exception)
@@ -155,6 +156,7 @@ namespace GamesApp.BL.Services
             {
 
                 _context.Achievements.Update(achievement);
+                _context.SaveChanges();
                 response.StatusCode = System.Net.HttpStatusCode.OK;
 
             }
