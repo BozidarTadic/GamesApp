@@ -8,7 +8,7 @@ namespace GamesApp.Dtos
 {
     public class GameDto
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public string DisplayName { get; set; }
 

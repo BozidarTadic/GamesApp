@@ -12,7 +12,7 @@ namespace GamesApp.Data
             Achievements = new HashSet<Achievement>();
         }
 
-        public string Id { get; set; }
+        public long Id { get; set; }
         public string DisplayName { get; set; }
 
         public virtual ICollection<Achievement> Achievements { get; set; }

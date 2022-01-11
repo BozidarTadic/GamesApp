@@ -33,7 +33,7 @@ namespace GamesApp.Controllers
         }
         [HttpGet]
         [Route("GetAchievement")]
-        public IActionResult GetAchievement(string id)
+        public IActionResult GetAchievement(long id)
         {
             var result = _gameService.GetAchievement(id);
 
@@ -49,7 +49,7 @@ namespace GamesApp.Controllers
         }
         [HttpGet]
         [Route("GetAllGameAchievements")]
-        public IActionResult GetAllGameAchievements(string gameId)
+        public IActionResult GetAllGameAchievements(long gameId)
         {
             var result=_gameService.GetAllGameAchievements(gameId);
 
@@ -81,7 +81,7 @@ namespace GamesApp.Controllers
         }
         [HttpDelete]
         [Route("DeleteAchievements")]
-        public IActionResult DeleteAchievements(string id)
+        public IActionResult DeleteAchievements(long id)
         {
             var result = _gameService.DeleteAchievement(id);
 

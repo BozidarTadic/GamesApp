@@ -9,10 +9,10 @@ namespace GamesApp.BL.Interfaces
 {
     public interface IGameService
     {
-        public Response<AchievementDto> GetAchievement(string id);
-        public Response<List<AchievementDto>> GetAllGameAchievements(string gameId);
+        public Response<AchievementDto> GetAchievement(long id);
+        public Response<List<AchievementDto>> GetAllGameAchievements(long gameId);
         public Response<NoValue> CreateAchievement(UpdateAchievementDto achievementDto);
         public Response<NoValue> UpdateAchievement(UpdateAchievementDto achievementDto);
-        public Response<NoValue> DeleteAchievement(string id);
+        public Response<NoValue> DeleteAchievement(long id);
     }
 }

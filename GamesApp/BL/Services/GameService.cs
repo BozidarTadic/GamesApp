@@ -47,7 +47,7 @@ namespace GamesApp.BL.Services
             return response;
         }
 
-        public Response<NoValue> DeleteAchievement(string id)
+        public Response<NoValue> DeleteAchievement(long id)
         {
             Response<NoValue> response = new Response<NoValue>();
 
@@ -75,7 +75,7 @@ namespace GamesApp.BL.Services
             return response;
         }
 
-        public Response<AchievementDto> GetAchievement(string id)
+        public Response<AchievementDto> GetAchievement(long id)
         {
             Response<AchievementDto> response = new Response<AchievementDto>();
             try
@@ -90,7 +90,7 @@ namespace GamesApp.BL.Services
                     Update = a.Update,
                     Icon = a.Icon,
                     GameId = a.GameId
-                }).FirstOrDefault();
+                }).First();
 
                 response.StatusCode = System.Net.HttpStatusCode.OK;
             }
@@ -103,7 +103,7 @@ namespace GamesApp.BL.Services
             return response;
         }
 
-        public Response<List<AchievementDto>> GetAllGameAchievements(string gameId)
+        public Response<List<AchievementDto>> GetAllGameAchievements(long gameId)
         {
             Response<List<AchievementDto>> response = new Response<List<AchievementDto>>();
 

@@ -8,7 +8,7 @@ namespace GamesApp.Dtos
 {
     public class UpdateAchievementDto
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public string DisplayName { get; set; }
         [Required]
@@ -19,6 +19,6 @@ namespace GamesApp.Dtos
         public int DisplayOrder { get; set; }
         
         [Required]
-        public string GameId { get; set; }
+        public long GameId { get; set; }
     }
 }
