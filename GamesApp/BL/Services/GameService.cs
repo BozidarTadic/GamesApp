@@ -21,7 +21,6 @@ namespace GamesApp.BL.Services
             Response<NoValue> response = new Response<NoValue>();
 
             Achievement achievement = new Achievement { 
-                Id=achievementDto.Id,
                 DisplayName = achievementDto.DisplayName,
                 Description = achievementDto.Description,
                 DisplayOrder = achievementDto.DisplayOrder,
